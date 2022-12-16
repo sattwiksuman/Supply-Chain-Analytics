@@ -1,63 +1,63 @@
-# Supply-Chain-Analytics
-Deterministic and Stochastic Dynamic Programs for optimization of Supply Chain
+# Supply-Chain-Analytics \
+Deterministic and Stochastic Dynamic Programs for optimization of Supply Chain \
 
-GENERAL INORMATION:
-  This project was undertaken as part of the RWTH Aachen Business School Analytics Project for Barkawi Group, a consultancy firm in the field of Supply Chain Optimization. The project was on Supply Chain analytics to evaluate the effect of re-balancing of inventory between retail outlets by modelling the uncertainties of demand using a stochastic dynamic program to optimize the supply plan.
+GENERAL INORMATION: \
+  This project was undertaken as part of the RWTH Aachen Business School Analytics Project for Barkawi Group, a consultancy firm in the field of Supply Chain Optimization. The project was on Supply Chain analytics to evaluate the effect of re-balancing of inventory between retail outlets by modelling the uncertainties of demand using a stochastic dynamic program to optimize the supply plan. \
 
-  The project on Demand Forecasting was the first phase of this project. The second phase of the project was to import the forecasted values of demand and build a supply plan around this. The original model comprised of a hub spoke model where the inventories of the retail outlets were satiated by ordering the differential quantities from the central warehouse every week subjected to the Minimum Order Quantity constraints. This was refined upon by introducing re-balancing of inventory between the outlets along with replenishment orders from the central warehouse every week. The supply decisions were made once every week; the lead time for receiving orders from the warehouse was 1 week and the lead time for re-balancing of inventory was zero. This was evaluated by building a deterministic dynamic program to minimize the overall cost. The optimization model at each time step was a linear program that minimized the total cost including the transport cost, inventory holding cost and most importantly the cost owing to loss of sales.
+  The project on Demand Forecasting was the first phase of this project. The second phase of the project was to import the forecasted values of demand and build a supply plan around this. The original model comprised of a hub spoke model where the inventories of the retail outlets were satiated by ordering the differential quantities from the central warehouse every week subjected to the Minimum Order Quantity constraints. This was refined upon by introducing re-balancing of inventory between the outlets along with replenishment orders from the central warehouse every week. The supply decisions were made once every week; the lead time for receiving orders from the warehouse was 1 week and the lead time for re-balancing of inventory was zero. This was evaluated by building a deterministic dynamic program to minimize the overall cost. The optimization model at each time step was a linear program that minimized the total cost including the transport cost, inventory holding cost and most importantly the cost owing to loss of sales. \
 
-  The third phase of the project was to model the demand uncertainties into the above deterministic program by using a stochastic dynamic program which worked with demand scenarios generated around the deterministic demand forecasts as mean values. Different demand scenarios were generated considering the growth of the market and probabilities were assigned to each of the demand scenarios using a triangular distribution. This was then programmed into the stochastic optimization program and was solved to generate a supply plan that gave a minimum average value of cost over the demand scenarios.
+  The third phase of the project was to model the demand uncertainties into the above deterministic program by using a stochastic dynamic program which worked with demand scenarios generated around the deterministic demand forecasts as mean values. Different demand scenarios were generated considering the growth of the market and probabilities were assigned to each of the demand scenarios using a triangular distribution. This was then programmed into the stochastic optimization program and was solved to generate a supply plan that gave a minimum average value of cost over the demand scenarios. \
 
   A rolling horizon kind of approach was followed to simulate the cost incurred over different weeks by solving the optimization model over a two week time horizon period each time. The results of simulations helped evaluate and quantify the hypothesis proposed by the consultants.
 
-READ ME:
-    1. Save the demand forecasts along with the demand scenarios as a .csv file such that 
-    column 1 contains the forecasted demand value for week 0
-    column 2 contains the values for demand scenario 1 in week 0 = 75% of expected value
-    column 3 contains the values for demand scenario 2 in week 0 = expected value = integral ceiling of forecasted values for week 0
-    column 4 contains the values for demand scenario 3 in week 0 = 2.7% higher than expected value
-    column 5 contains the values for demand scenario 4 in week 0 = 4% higher than expected value
-    column 6 contains the values for demand scenario 5 in week 0 = 6% higher than expected value
-    column 7 contains the forecasted demand value for week 1
-    column 8 contains the values for demand scenario 1 in week 2 = 75% of expected value
-    column 9 contains the values for demand scenario 2 in week 3 = expected value = integral ceiling of forecasted values for week 0
-    column 10 contains the values for demand scenario 3 in week 4 = 2.7% higher than expected value
-    column 11 contains the values for demand scenario 4 in week 5 = 4% higher than expected value
-    column 12 contains the values for demand scenario 5 in week 6 = 6% higher than expected value
-    2. The demand scenarios are modelled such that their is atleast one unit difference between the demand scenarios
-    3. The output stock file must contain 5 rows and 10 column with each cell (i,j)
-    containing the stock for outlet j for the demand scenario i. 
-    This is generated by the code to be used in the program next week and is called "outlet_stock_next.csv".
-    4. For the first week (First time this code is run), "outlet_stock.csv" file supplied with this code can be used.
-    5. The replenishment file is an array of 10 values with each value [j] reresenting the
-    replenishment ordered for outlet j arriving in the current week (WEEK 0).
-    This is generated by the code to be used in the program next week and is named "replenishment_next.csv".
-    6. For the first week (First time this code is run), "replenishment.csv" file supplied along with this code can be used.
+READ ME: \
+    1. Save the demand forecasts along with the demand scenarios as a .csv file such that \
+    column 1 contains the forecasted demand value for week 0 \
+    column 2 contains the values for demand scenario 1 in week 0 = 75% of expected value \
+    column 3 contains the values for demand scenario 2 in week 0 = expected value = integral ceiling of forecasted values for week 0 \
+    column 4 contains the values for demand scenario 3 in week 0 = 2.7% higher than expected value \
+    column 5 contains the values for demand scenario 4 in week 0 = 4% higher than expected value \
+    column 6 contains the values for demand scenario 5 in week 0 = 6% higher than expected value \
+    column 7 contains the forecasted demand value for week 1 \
+    column 8 contains the values for demand scenario 1 in week 2 = 75% of expected value \
+    column 9 contains the values for demand scenario 2 in week 3 = expected value = integral ceiling of forecasted values for week 0 \
+    column 10 contains the values for demand scenario 3 in week 4 = 2.7% higher than expected value \
+    column 11 contains the values for demand scenario 4 in week 5 = 4% higher than expected value \
+    column 12 contains the values for demand scenario 5 in week 6 = 6% higher than expected value \
+    2. The demand scenarios are modelled such that their is atleast one unit difference between the demand scenarios \
+    3. The output stock file must contain 5 rows and 10 column with each cell (i,j) 
+    containing the stock for outlet j for the demand scenario i.  
+    This is generated by the code to be used in the program next week and is called "outlet_stock_next.csv". \
+    4. For the first week (First time this code is run), "outlet_stock.csv" file supplied with this code can be used. \
+    5. The replenishment file is an array of 10 values with each value [j] reresenting the 
+    replenishment ordered for outlet j arriving in the current week (WEEK 0). 
+    This is generated by the code to be used in the program next week and is named "replenishment_next.csv". \
+    6. For the first week (First time this code is run), "replenishment.csv" file supplied along with this code can be used. \
     7. The program asks for three csv files as inputs: demand forcast over next two weeks,
     stock at each outlet at the end of last week, replenishments ordered from the warehouse
-    last week that are expected to arrive this week (WEEK 0)
-    8. Please enter the location of these three files in the proper positions in the code.
+    last week that are expected to arrive this week (WEEK 0) \
+    8. Please enter the location of these three files in the proper positions in the code. \
     9. The output that the program prints suggests the rebalance to be carried out over
-    the current week (WEEK 0) and replenishments to be ordered from the warehouse next week (WEEK 1).
+    the current week (WEEK 0) and replenishments to be ordered from the warehouse next week (WEEK 1). \
   
-QUESTION:
-    We are given 10 outlets j = 1, 2... 10, and warehouse j = 0 in France.
-    Set of all products sold by the company is also given.
-    Time horizon is considered as 2 weeks.
-    We know the demand D<jt> for 2 subsequent week (week t = 0 =current week) 
-    at every outlet j for each product. This is a result of forecasting carried out over past 3 years demand data.
-    We know the stock at each outlet j = S<jt> for week t and all products p.
-    We know the distance x between all centres to compute the cost of transportation.
-    Every week we run a decision model once to replenish the inventory at each outlet in two ways:
-    1. From the warehouse, where the lead time is one week => products ordered today will arrive next week.
-    2. Rebalancing from other outlets, where lead time is zero => products ordered today arrive immediately.
-    The warehouse and the outlets have no capacity constraints. The arcs also have no capacity constraints.
-    For material stored at the outlets we have identical inventory holding costs H.
-    For Transportation Cost G we assume a dependence on the distance and amount of material transported on each arc
-    We need to model this and at the beginning of each week determine what quantity of each product is to be
-    rebalanced between the outlets and how much has to be ordered from the warehourse for each outlet
-    so that the overall cost is minimized.
-    We do the optimisation for only a particular product for all the ten outlets.
+QUESTION: \
+    We are given 10 outlets j = 1, 2... 10, and warehouse j = 0 in France. \
+    Set of all products sold by the company is also given. \
+    Time horizon is considered as 2 weeks. \
+    We know the demand D<jt> for 2 subsequent week (week t = 0 =current week)  \
+    at every outlet j for each product. This is a result of forecasting carried out over past 3 years demand data. \
+    We know the stock at each outlet j = S<jt> for week t and all products p. \
+    We know the distance x between all centres to compute the cost of transportation. \
+    Every week we run a decision model once to replenish the inventory at each outlet in two ways: \
+    1. From the warehouse, where the lead time is one week => products ordered today will arrive next week. \
+    2. Rebalancing from other outlets, where lead time is zero => products ordered today arrive immediately. \
+    The warehouse and the outlets have no capacity constraints. The arcs also have no capacity constraints. \
+    For material stored at the outlets we have identical inventory holding costs H. \
+    For Transportation Cost G we assume a dependence on the distance and amount of material transported on each arc \
+    We need to model this and at the beginning of each week determine what quantity of each product is to be \
+    rebalanced between the outlets and how much has to be ordered from the warehourse for each outlet \
+    so that the overall cost is minimized. \
+    We do the optimisation for only a particular product for all the ten outlets. \
    
-IDEA OF SOLUTION:
-    We define a dynamic model where over two weeks we model the flow through the network.
+IDEA OF SOLUTION: \
+    We define a dynamic model where over two weeks we model the flow through the network. \
